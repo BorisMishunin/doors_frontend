@@ -104,140 +104,47 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
-    coffee: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/scripts',
-          ext: '.js'
-        }]
-      },
-      test: {
-        files: [{
-          expand: true,
-          cwd: 'test/spec',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/spec',
-          ext: '.js'
-        }]
-      }
-    },
-    compass: {
-      options: {
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/components',
-        relativeAssets: true
-      },
-      dist: {},
-      server: {
-        options: {
-          debugInfo: true
-        }
-      }
-    },
-    concat: {
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/scripts/scripts.js': [
-            '.tmp/scripts/{,*/}*.js',
-            '<%= yeoman.app %>/scripts/{,*/}*.js'
-          ]
-        }
-      }
-    },
+
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: 'app/views/index.html',
       options: {
-        dest: '<%= yeoman.dist %>'
-      }
+        dest: 'dist'
+        }
     },
-    usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      options: {
-        dirs: ['<%= yeoman.dist %>']
-      }
+
+    concat: {
+      '.tmp/concat/assets/js/optimized.js': [
+        '<%= yeoman.app %>/scripts/{,*/}*.js'
+      ],
+      //'.tmp/concat/assets/css/optimized.css': [
+      //  '<%= yeoman.app %>/styles/{,*/}*.css'
+      //]
     },
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
+
+    uglify: {
+      'dist/scripts/main.min.js': ['.tmp/concat/assets/js/optimized.js']
     },
+
+
     cssmin: {
       dist: {
         files: {
-          '<%= yeoman.dist %>/styles/main.css': [
-            '.tmp/styles/{,*/}*.css',
-            '<%= yeoman.app %>/styles/{,*/}*.css'
-          ]
+          'dist/styles/main.min.css': ['<%= yeoman.app %>/styles/{,*/}*.css']
+        //  'dist/styles/main.min.css': ['.tmp/concat/assets/css/optimized.css']
         }
       }
     },
-    htmlmin: {
-      dist: {
+
+
+    // Includes html
+    includes: {
+      build: {
+        cwd: 'app/views',
+        src: [ '*.html' ],
+        dest: 'dist/html/',
         options: {
-          /*removeCommentsFromCDATA: true,
-          // https://github.com/yeoman/grunt-usemin/issues/44
-          //collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true*/
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
-      }
-    },
-    ngmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>/scripts',
-          src: '*.js',
-          dest: '<%= yeoman.dist %>/scripts'
-        }]
-      }
-    },
-    uglify: {
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/scripts/scripts.js': [
-            '<%= yeoman.dist %>/scripts/scripts.js'
-          ],
-        }
-      }
-    },
-    rev: {
-      dist: {
-        files: {
-          src: [
-            '<%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-            '<%= yeoman.dist %>/styles/fonts/*'
-          ]
+          flatten: true,
+          includePath: 'app/includes'
         }
       }
     },
@@ -258,6 +165,8 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  grunt.loadNpmTasks('grunt-includes');
 
   grunt.renameTask('regarde', 'watch');
 
@@ -281,20 +190,12 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'jshint',
-    'coffee',
-    'compass:dist',
     'useminPrepare',
-    'imagemin',
-    'cssmin',
-    'htmlmin',
     'concat',
+    'cssmin',
     'copy',
-    'cdnify',
-    'ngmin',
     'uglify',
-    'rev',
-    'usemin'
+    'includes'
   ]);
 
   grunt.registerTask('default', ['build']);
