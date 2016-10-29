@@ -163,6 +163,13 @@ module.exports = function (grunt) {
           ]
         }]
       }
+    },
+
+    // Automatically inject Bower components into the app
+    wiredep: {
+      target: {
+        src: ['<%= yeoman.app %>/**/*.html']
+      }
     }
   });
 
@@ -193,6 +200,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concat',
     'cssmin',
+    'wiredep',
     'copy',
     'uglify',
     'includes'

@@ -1,2 +1,9 @@
     include "app_header.html"
+    include "marketplace/goods_list.html"
+    <div
+      ui-view
+      autoscroll="false"
+      class="ui_view_block"
+      ng-class="{'white_background': $parent.whiteBackground, 'settings_background': $parent.whiteBackground == 'settings'}">
+    </div>
     include "app_footer.html"
