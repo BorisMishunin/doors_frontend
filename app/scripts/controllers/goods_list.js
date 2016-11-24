@@ -1,17 +1,19 @@
 'use strict';
 
-app =  angular.module('doorsApp')
+angular.module('doorsApp')
+.app.controller('GoodsController', GoodsController);
 
-app.controller('GoodsController', ['$scope', 'MarketItem', function($scope, MarketItem){
-  
-  $scope.good_object = new MarketItem();
-  
-  $scope.good_object
-    .$get_goods_list()
+AuctionsController.$inject = [ '$scope', 'MarketItem' ];
+
+function AuctionsController( $scope, MarketItem ) {
+   var vm = this;
+
+  vm.goods = MarketItem
+    .get_goods_list().$promise
     .then(
-      function (goods) {
-        $scope.goods = goods;        
-      }  
-    );
-
-}]);
+      function (result) {
+        return  result;
+        
+      }
+    )
+};

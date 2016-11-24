@@ -1,4 +1,5 @@
 <script type="text/ng-template" id="goods_list.html">
+
   <div class="row row-offcanvas row-offcanvas-right">
 
         <div class="col-xs-12 col-sm-9">
@@ -7,16 +8,16 @@
           </p>
           <div class="row">
 
-            <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods" ng-controller='ColorsController'
-               ng-init = "mainImage = good.foto[0]" ng-mouseenter="doorHover($event)" ng-mouseleave="doorHover($event)">
+            <div class="col-xs-6 col-lg-4 thumbnail good_card" ng-repeat="good in goods.results"
+                ng-mouseenter="doorHover($event)" ng-mouseleave="doorHover($event)">
                 <div class="input">
                    <div class="good_img">
-                    <img  src="{$ mainImage $}" alt="">
+                    <img ng-src="/{{ good.foto[0] }}" alt="" />
                 </div>
 
-                <h4>{$ good.name $}</h4>
+                <h4>{{ good.name }}</h4>
                 <p class="good-desc desc">
-                     <span ng-repeat="(property, value) in good.properties">{{property}}: {{value}} <span ng-if = '!$last'>/</span> </span>
+                     <span ng-repeat="(property, value) in good.info">{{property}}: {{value}} <span ng-if = '!$last'>/</span> </span>
                 </p>
                 <p><a class="btn btn-success" href="#" role="button">Заказать &raquo;</a></p>
               </div>
@@ -25,6 +26,7 @@
 
           </div><!--/row-->
         </div><!--/.col-xs-12.col-sm-9-->
+    </div>
 
 
 

@@ -13,6 +13,7 @@ app.config(['$stateProvider', function ($stateProvider) {
       url: "",
       templateUrl: "goods_list.html",
       controller: "GoodsController",
+      controllerAs: 'vm',
       title: 'Купить Дверь'
     });
   }]);

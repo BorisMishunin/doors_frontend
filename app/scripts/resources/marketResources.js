@@ -12,6 +12,7 @@ marketService.factory('MarketItem', ['$resource', function ($resource) {
     {
       get_goods_list: {
         method: 'GET',
+        isArray: false,
         params: {
           action: 'getItems'
         }
