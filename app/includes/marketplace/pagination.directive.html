@@ -1,0 +1,20 @@
+<script type="text/ng-template" id="pagination.directive.html">
+  <div class="col-md-12 pagination_block no-pad">
+
+    <div class="col-md-6 col-sm-6 col-xs-12 pagination_block__row no-pad">
+      <uib-pagination
+        total-items="vm.totalItems"
+        items-per-page="20"
+        page="vm.filters.page"
+        on-select-page="changed(vm.filters.page)"
+        rotate="false"
+        max-size="vm.pageMax"
+        ng-model="vm.filters.page"
+        next-text="next"
+        ng-change="vm.updateFilter()"
+        previous-text="prev">
+      </uib-pagination>
+    </div>
+
+  </div>
+</script>

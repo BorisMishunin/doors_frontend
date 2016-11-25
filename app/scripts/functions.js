@@ -3,10 +3,4 @@ $(document).ready(function(){
   auto: true,
   autoControls: true
   });
-    
-  $('[data-toggle="offcanvas"]').click(function () {
-    alert('ddd');
-    $('.row-offcanvas').toggleClass('active')
-  });
-    
 });

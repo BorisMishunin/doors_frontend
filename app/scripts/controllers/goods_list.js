@@ -1,19 +1,39 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('doorsApp')
-.app.controller('GoodsController', GoodsController);
+angular.module('doorsApp').controller('GoodsController', GoodsController);
 
-AuctionsController.$inject = [ '$scope', 'MarketItem' ];
+GoodsController.$inject = [ '$scope', 'MarketItem' ];
 
-function AuctionsController( $scope, MarketItem ) {
-   var vm = this;
+function GoodsController( $scope, MarketItem ) {
+    var vm = this;
 
-  vm.goods = MarketItem
-    .get_goods_list().$promise
-    .then(
-      function (result) {
-        return  result;
-        
-      }
-    )
-};
+    vm.goods = [];
+    vm.filters = {};
+    vm.itemsLoaded = false;
+    vm.totalItems = 0;
+    vm.pageMax = 20;
+    vm.getItems = getItems;
+
+    getItems();
+
+    function getItems(){
+      MarketItem
+        .get_goods_list(vm.filters).$promise
+        .then(
+          function (result) {
+            console.log(vm.filters);
+            vm.goods = result;
+            vm.totalItems = result['count'];
+            if (!vm.itemsLoaded) vm.itemsLoaded = true;
+          },
+          function (result) {
+            vm.goods = [];
+            vm.totalItems = 0;
+            if (vm.itemsLoaded) vm.itemsLoaded = false;
+          }
+        )
+    };
+  };
+
+})();
