@@ -1,12 +1,11 @@
 (function() {
   'use strict';
 
-angular.module('doorsApp').controller('GoodsController', GoodsController);
+angular.module('doorsApp').controller('BaseController', BaseController);
 
-GoodsController.$inject = [ '$scope', 'MarketItem' ];
+BaseController.$inject = ['vm', '$scope', 'MarketItem', 'goodslistItemsService'];
 
-function GoodsController( $scope, MarketItem ) {
-    var vm = this;
+function BaseController(vm, $scope, MarketItem, goodslistItemsService) {
 
     vm.goods = [];
     vm.filters = {};
@@ -15,11 +14,9 @@ function GoodsController( $scope, MarketItem ) {
     vm.pageMax = 20;
     vm.getItems = getItems;
 
-    getItems();
-
     function getItems(){
-      MarketItem
-        .get_goods_list(vm.filters).$promise
+      goodslistItemsService
+        .getItems(vm.filters)
         .then(
           function (result) {
             console.log(vm.filters);
@@ -34,6 +31,7 @@ function GoodsController( $scope, MarketItem ) {
           }
         )
     };
+
   };
 
 })();

@@ -1,8 +1,38 @@
 
+.action_layer, .action_image{
+  min-height: 250px;
+  overflow: visible;
+}
+
+.action_layer img{
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+div.custom-indicator{
+  text-align: center;
+  font-size: 15px;
+}
+
+div.custom-indicator span{
+   cursor: pointer;
+}
+
+div.custom-indicator span.active{
+  color: #ac2925;
+}
+
+.type_list{
+  height: 290px;
+}
+
 .good_img img {
-    
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 250px;
+    max-width: 250px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -11,16 +41,20 @@
 
 .good_img{
     width: 100%;
-    
 }
 
-.good_color{   
+.goodname{
+    width: 100%;
+    text-align: center;
+}
+
+.good_color{
     margin: 5px 0px;
     height: 30px;
     width: 30px;
     border-radius: 50px;
     border: 1px solid #ccc;
-    overflow: hidden;  
+    overflow: hidden;
 }
 
 .good_colors{
@@ -39,25 +73,14 @@
     margin: auto;
 }
 
-.good-desc {
-    white-space: nowrap;
-    max-height: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.good_color img {
-    max-height: 100%;
-    max-width: 100%;
-    
-}
-
 .good_card{
-    height: 325px;
+    height: 290px;
+    overflow: hidden;
 }
 
 .good_card:hover{
     border: 1px solid cyan;
+    overflow: visible;
 }
 
 .input {
@@ -68,7 +91,7 @@
     z-index:1;
     left:0;
     top:0;
-    overflow: hidden;  
+    overflow: hidden;
     opacity: 1;
     -moz-opacity: 1; /*mozilla <3.5**/
     filter: alpha(opacity=100); /*IE <9*/
@@ -83,15 +106,15 @@
     width: 110%;
     z-index: 1000;
     border: 1px solid #ccc;
-    overflow: visible;  
+    overflow: visible;
     display: block;
-    
+
     box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
     -webkit-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
     -moz-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
     filter: progid:DXImageTransform.Microsoft.shadow(direction=120, color=#000000, strength=10);
-    
-    border-radius: 5px;    
+
+    border-radius: 5px;
 }
 .filter-values-panel {
     padding-top: 2px;

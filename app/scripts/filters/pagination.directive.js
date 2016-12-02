@@ -23,6 +23,8 @@
         controller: PaginationController,
         controllerAs: 'vm',
         bindToController: true,
+        link: function(scope, el, attrs) {
+        }
       };
 
       return directive;

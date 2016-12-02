@@ -1,0 +1,19 @@
+<script type="text/ng-template" id="goodlist_home.directive.html">
+  <div class="row">
+    <div class="col-md-2 col-sm-6 col-xs-12 thumbnail">
+      Базовая цена: 2321
+      Количество: {{vm.totalItems}}
+    </div>
+    <div ng-repeat="good in vm.goods.results| limitTo:5" class="col-md-2 col-sm-6 col-xs-12 thumbnail good_card"
+         ng-mouseenter="doorHover($event)" ng-mouseleave="doorHover($event)">
+      <div class="input">
+        <div class="good_img">
+          <img ng-src="/{{ good.foto[0] }}" alt="" />
+        </div>
+
+        <h4 class="goodname">{{ good.name }}</h4>
+        <p><a class="btn btn-success" href="#" role="button">Заказать &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+</script>

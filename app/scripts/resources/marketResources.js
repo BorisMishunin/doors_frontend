@@ -23,7 +23,36 @@ marketService.factory('MarketItem', ['$resource', function ($resource) {
         params: {
           action: 'getItem'
         }
+      },
+      get_good_types: {
+        method: 'GET',
+        params: {
+          action: 'getGoodsType'
+        }
       }
+    },
+    {
+      stripTrailingSlashes: false
+    }
+  )
+}]);
+
+marketService.factory('DoorsMarketplace', ['$resource', function ($resource) {
+  return $resource(
+    "/api/marketplace/:action/:id",
+    {
+      action: '@action',
+      id: '@id'
+    },
+    {
+      get_actions: {
+        method: 'GET',
+        isArray: false,
+        params: {
+          action: 'getActions'
+        }
+      },
+
     },
     {
       stripTrailingSlashes: false
