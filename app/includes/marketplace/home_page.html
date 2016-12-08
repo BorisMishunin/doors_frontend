@@ -1,13 +1,8 @@
 <script type="text/ng-template" id="home_page.html">
   <div class="row row-offcanvas">
-    <ul rn-carousel rn-carousel-pause-on-hover="" rn-carousel-index='carouselIndex' rn-carousel-auto-slide="" class="action_image">
-      <li ng-repeat="action in vm.actions.results|carouselSlice:carouselBufferIndex:carouselBufferSize track by action.id" ng-class="'id-' + action.id">
-        <div class="action_layer"> <img ng-src="/{{ action.foto[0] }}" alt="" /> </div>
-      </li>
-    </ul>
-    <div class="custom-indicator rn-carousel-indicators">
-      <span ng-repeat="slide in vm.actions.results" ng-class="{active: $index==$parent.carouselIndex}" ng-click="$parent.carouselIndex = $index">●</span>
-    </div>
+    <div class="owl-carousel">
+      <div ng-repeat="action in vm.actions.results" ng-repeat-owl-carousel carousel-init="vm.carouselInitializer"><img class="action_image" ng-src="/{{ action.foto[0] }}" alt="" /></div>
+      </div>
   </div>
   <div class="row row-offcanvas">
     <div ng-repeat="type in vm.goods_types.results" class="col-xs-12">

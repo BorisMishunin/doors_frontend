@@ -13,6 +13,24 @@ function HomePageController( $scope, DoorsMarketplace, $controller, goodslistIte
 
     getActions();
 
+    vm.carouselInitializer = function() {
+       console.log('dd');
+        $(".owl-carousel").owlCarousel({
+          singleItem: true,
+          navigation: true,
+          pagination: true,
+          autoPlay: true,
+          stopOnHover: true,
+          baseClass : "owl-carousel",
+          //theme: "owl-theme",
+          autoHeight: true,
+          navigationText: [
+            "<i class='fa fa-chevron-circle-left fa-2x'></i>",
+            "<i class='fa fa-chevron-circle-right fa-2x'></i>"
+          ],
+        });
+      };
+
     function getActions(){
       DoorsMarketplace
         .get_actions(vm.filters).$promise

@@ -114,7 +114,9 @@ module.exports = function (grunt) {
 
     concat: {
       '.tmp/concat/assets/js/optimized.js': [
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        '<%= yeoman.app %>/scripts/{,*/}*.js',
+        '<%= yeoman.app %>/components/owl-carousel/owl-carousel/owl.carousel.js',
+        '<%= yeoman.app %>/components/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.js'
       ],
       //'.tmp/concat/assets/css/optimized.css': [
       //  '<%= yeoman.app %>/styles/{,*/}*.css'
@@ -129,7 +131,11 @@ module.exports = function (grunt) {
     cssmin: {
       dist: {
         files: {
-          'dist/styles/main.min.css': ['<%= yeoman.app %>/styles/{,*/}*.css']
+          'dist/styles/main.min.css': [
+            '<%= yeoman.app %>/styles/{,*/}*.css',
+            //'<%= yeoman.app %>/components/owl-carousel/owl-carousel/owl.theme.css',
+            '<%= yeoman.app %>/components/owl-carousel/owl-carousel/owl.carousel.css'
+          ]
         //  'dist/styles/main.min.css': ['.tmp/concat/assets/css/optimized.css']
         }
       }
@@ -159,6 +165,7 @@ module.exports = function (grunt) {
             '*.{ico,txt}',
             '.htaccess',
             'components/**/*',
+            'fonts/**/*',
             'images/{,*/}*.{gif,webp}'
           ]
         }]

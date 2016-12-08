@@ -1,38 +1,4 @@
-
-.action_layer, .action_image{
-  min-height: 250px;
-  overflow: visible;
-}
-
-.action_layer img{
-  max-height: 100%;
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-}
-
-div.custom-indicator{
-  text-align: center;
-  font-size: 15px;
-}
-
-div.custom-indicator span{
-   cursor: pointer;
-}
-
-div.custom-indicator span.active{
-  color: #ac2925;
-}
-
-.type_list{
-  height: 290px;
-}
-
-.good_img img {
-    max-height: 250px;
-    max-width: 250px;
+img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -148,4 +114,57 @@ div.custom-indicator span.active{
     position: absolute;
     padding: 0 5px;
     background-color: white;
+}
+
+.owl-carousel {
+  position: relative;
+}
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  /*height: 25px;
+  width: 25px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #c0c0c0;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;*/
+  opacity: 0.5;
+  -moz-opacity: 0.5; /*mozilla <3.5**/
+}
+.owl-prev {
+  left: 0;
+}
+.owl-next {
+  right: 0;
+}
+
+.owl-prev:hover,
+.owl-next:hover {
+  opacity: 1;
+  -moz-opacity: 1; /*mozilla <3.5**/
+}
+
+.owl-page {
+  height: 7px;
+  width: 7px;
+  background-color: #f8f8f8;
+  display: inline-block;
+  margin-left: 5px;
+  border-radius: 10px;
+}
+
+.owl-page.active {
+  background-color: grey
+}
+
+.owl-pagination {
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  bottom: 10px;
 }

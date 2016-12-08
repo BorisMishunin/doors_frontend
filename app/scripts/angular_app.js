@@ -5,7 +5,7 @@ var app = angular.module('doorsApp', ['ui.bootstrap',
                                       'ngRoute',
                                       'MarketService',
                                       'FiltersModule',
-                                      'angular-carousel']);
+                                      'ocNgRepeat']);
 
 
 app.config(['$stateProvider', function ($stateProvider) {

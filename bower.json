@@ -9,7 +9,7 @@
     "angular-bootstrap": "~0.14.3",
     "angular-ui-router": "~0.2.15",
     "angular-route": "1.4.8",
-    "angular-carousel": "latest"
+    "ng-repeat-owl-carousel": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.5.8",
