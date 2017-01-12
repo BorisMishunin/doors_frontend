@@ -10,14 +10,22 @@ var app = angular.module('doorsApp', ['ui.bootstrap',
 
 app.config(['$stateProvider', function ($stateProvider) {
 
-  var FILTERS_URL_PARAMS = "page";
+  var FILTERS_URL_PARAMS = "page_size&type&page";
 
   $stateProvider
     .state('goodsList', {
-      url: "/:goodType?" + FILTERS_URL_PARAMS,
+      url: "/goods?" + FILTERS_URL_PARAMS,
       reloadOnSearch: false,
       templateUrl: "goods_page.html",
       controller: "GoodsController",
+      controllerAs: 'vm',
+      title: 'Купить Дверь'
+    })
+    .state('goodCard', {
+      url: "/good/:goodId",
+      reloadOnSearch: false,
+      templateUrl: "good_card.html",
+      controller: "GoodCardController",
       controllerAs: 'vm',
       title: 'Купить Дверь'
     })

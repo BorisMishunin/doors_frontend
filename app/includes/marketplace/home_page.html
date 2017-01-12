@@ -1,20 +1,23 @@
 <script type="text/ng-template" id="home_page.html">
   <div class="row row-offcanvas">
-    <div class="owl-carousel">
+    <div  class="owl-carousel">
       <div ng-repeat="action in vm.actions.results" ng-repeat-owl-carousel carousel-init="vm.carouselInitializer"><img class="action_image" ng-src="/{{ action.foto[0] }}" alt="" /></div>
-      </div>
+    </div>
   </div>
-  <div class="row row-offcanvas">
-    <div ng-repeat="type in vm.goods_types.results" class="col-xs-12">
-      <h1>{{type.name}}</h1>
 
-    <good-list
+
+  <div ng-repeat="type in vm.goods_types" class="panel panel-info type-list">
+
+    <div class="panel-heading">{{type.name}}</div>
+
+    <div class="panel-body">
+      <good-list
         filters="vm.filters"
         type="type.id"
+        price="type.min_price"
         template-url="goodlist_home.directive.html">
-    </good-list>
-      <hr>
+      </good-list>
     </div>
-
   </div>
+
 </script>

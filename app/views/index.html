@@ -3,7 +3,17 @@
     include "marketplace/goodlist_home.directive.html"
     include "marketplace/home_page.html"
     include "marketplace/goods_page.html"
+    include "marketplace/good_card.html"
     include "app_header.html"
+
+    <!-- SPINNER
+    <div
+      ng-if="vm.isContentLoading"
+      class="col-md-12 col-sm-12 col-xs-12 loading-spinner">
+     <img src="../images/spinner.gif" class="loading-spinner--image">
+    </div>
+    SPINNER : end -->
+
     <div
       ui-view
       autoscroll="false"

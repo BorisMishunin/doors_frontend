@@ -1,10 +1,31 @@
 <script type="text/ng-template" id="pagination.directive.html">
   <div class="col-md-12 pagination_block no-pad">
 
+    <div class="col-md-6 col-sm-6 col-xs-12 page_size_block no-pad" >
+      <div class="col-md-12 col-sm-12 col-xs-12 page_size__options no-pad">
+        <div class="page_size__options__option--text">
+          Отображать по:
+        </div>
+        <div class="page_size__options__option" ng-click="vm.changePageSize(30)"
+          ng-class="{'bg-success': vm.filters.page_size == 30}">
+          30
+        </div>
+        <div class="page_size__options__option" ng-click="vm.changePageSize(60)"
+          ng-class="{'bg-success': vm.filters.page_size == 60}">
+          60
+        </div>
+        <div class="page_size__options__option" ng-click="vm.changePageSize(90)"
+          ng-class="{'bg-success': vm.filters.page_size == 90}">
+          90
+        </div>
+        <br/>
+      </div>
+    </div>
+
     <div class="col-md-6 col-sm-6 col-xs-12 pagination_block__row no-pad">
       <uib-pagination
         total-items="vm.totalItems"
-        items-per-page="20"
+        items-per-page="vm.filters.page_size"
         page="vm.filters.page"
         on-select-page="changed(vm.filters.page)"
         rotate="false"
